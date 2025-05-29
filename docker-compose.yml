@@ -14,32 +14,24 @@ services:
       - "2201:22"
     tty: true
 
-  srv_fedora:
-    build:
-      context: ./fedora
-      dockerfile: Dockerfile
-    image: img_fedora:latest
-#    image: jrei/systemd-fedora:latest
-    container_name: srv_fedora
-    hostname: srv_fedora
+#  srv_fedora:
+#    image: jrei/systemd-fedora
+#    container_name: srv_fedora
+#    hostname: srv_fedora
 #    privileged: true
 #    cgroupns: host
+#    ports:
+#      - "5902:5901"
+#      - "2202:22"
+#    networks:
+#      net_30:
+#        ipv4_address: 30.0.0.35
 #    volumes:
 #      - /sys/fs/cgroup:/sys/fs/cgroup:rw
 #    tmpfs:
 #      - /run
 #      - /run/lock
 #    command: /sbin/init
-#    tty: true
-#    stdin_open: true
-    networks:
-      net_30:
-        ipv4_address: 30.0.0.35
-    ports:
-      - "5902:5901"
-      - "2202:22"
-    tty: true
-
 
   srv_ubuntu:
     build:

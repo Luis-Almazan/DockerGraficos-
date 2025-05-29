@@ -1,0 +1,10 @@
+#!/bin/bash
+#xrdb $HOME/.Xresources
+export XDG_SESSION_TYPE=x11
+export DESKTOP_SESSION=cinnamon
+export XDG_CURRENT_DESKTOP=X-Cinnamon
+export GDK_BACKEND=x11
+export GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+
+# Iniciar Cinnamon sin login manager
+dbus-launch --exit-with-session cinnamon-session-cinnamon

@@ -1,4 +1,5 @@
 FROM fedora:latest
+#FROM jrei/systemd-fedora:latest
 #Instalado de paquetes
 RUN dnf update -y && dnf install -y vim git net-tools sudo zsh unzip nano  nmap
 RUN dnf install -y @gnome-desktop gnome-terminal 

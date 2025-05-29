@@ -4,11 +4,17 @@ USER root
 # Instalar paquetes necesarios
 RUN apt-get update && apt-get install -y vim git curl net-tools sudo zsh unzip nano nmap htop wget iputils-ping
 # Instalar entorno de escritorio y VNC
-RUN apt install -y cinnamon
+RUN apt install -y cinnamon cinnamon-desktop-environment xterm
 RUN apt install -y dbus-x11 tigervnc-standalone-server tigervnc-common
 # Crear usuario y grupo
 RUN groupadd utiger
 RUN useradd -s /bin/bash -g utiger -m  -G sudo utiger
+# Instalar entorno de escritorio y VNC 
+RUN mkdir -p /home/utiger/.vnc      
+RUN chown -R utiger:utiger /home/utiger/.vnc 
+COPY xstartup /home/utiger/.vnc/  
+# Cambiar permisos del archivo xstartup  
+RUN chmod +x /home/utiger/.vnc/xstartup && chown utiger:utiger /home/utiger/.vnc/xstartup 
 
 #Intalacion de Any Desk
 RUN install -m 0755 -d /etc/apt/keyrings

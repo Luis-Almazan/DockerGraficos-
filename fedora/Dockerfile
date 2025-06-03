@@ -2,8 +2,7 @@ FROM fedora:latest
 #FROM jrei/systemd-fedora:latest
 #Instalado de paquetes
 RUN dnf update -y && dnf install -y vim git net-tools sudo zsh unzip nano nmap wget passwd
-RUN dnf install -y epel-release && \
-    dnf5 install -y @xfce-desktop-environment && \
+RUN dnf5 install -y @xfce-desktop-environment && \
     dnf install -y tigervnc-server xterm
 # 
 RUN mkdir -p /var/lib/dbus

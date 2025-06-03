@@ -1,11 +1,13 @@
 #!/bin/sh
+
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-export XDG_SESSION_TYPE=x11
-export GDK_BACKEND=x11
-export LIBGL_ALWAYS_SOFTWARE=1
-export MUTTER_DEBUG_ENABLE_NOEGL=1
-export MUTTER_DEBUG_DISABLE_HW_CURSORS=1
-export DISPLAY=:1
-eval $(dbus-launch --sh-syntax --exit-with-session)
-gnome-session --debug
+#/etc/X11/xinit/xinitrc
+# Assume either Gnome will be started by default when installed
+# We want to kill the session automatically in this case when user logs out. In case you modify
+# /etc/X11/xinit/Xclients or ~/.Xclients yourself to achieve a different result, then you should
+# be responsible to modify below code to avoid that your session will be automatically killed
+#if [ -e /usr/bin/gnome-session ]; then
+#    vncserver -kill $DISPLAY
+#fi
+startxfce4 &

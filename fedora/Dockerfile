@@ -1,11 +1,10 @@
-#FROM fedora:latest
-FROM jrei/systemd-fedora:latest
+FROM fedora:latest
+#FROM jrei/systemd-fedora:latest
 #Instalado de paquetes
 RUN dnf update -y && dnf install -y vim git net-tools sudo zsh unzip nano nmap wget passwd
 RUN dnf install -y epel-release && \
-    dnf groupinstall -y "Xfce" && \
-    dnf install -y dbus-x11 xorg-x11-server-Xorg && \
-    dnf install -y tigervnc-server
+    dnf5 install -y @xfce-desktop-environment && \
+    dnf install -y tigervnc-server xterm
 # 
 RUN mkdir -p /var/lib/dbus
 RUN dbus-uuidgen --ensure
